@@ -1,29 +1,25 @@
-
-/* Add font files for Instrument Sans */
+/* ------------------------ */
+/*     FONT VARIABLES       */
+/* ------------------------ */
 @font-face {
   font-family: 'Instrument Sans';
   src: url('fonts/instrument-sans.woff2') format('woff2'),
        url('fonts/instrument-sans.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
 }
+
 :root {
-  --font-family-instrument-sans: 'Instrument Sans', sans-serif;
-  --font-family-inter: 'Inter', sans-serif;
-  --text-rgb-183-180-180: rgba(183, 180, 180, 1);
-  --text-white: rgba(255, 255, 255, 1);
+  --font-instrument: 'Instrument Sans', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+
+  --gray-light: rgba(183, 180, 180, 1);
+  --white: #fff;
+
+  --button-bg: #5a2dbd;
 }
 
-.text-rgb-183-180-180 {
-  color: var(--text-rgb-183-180-180);
-}
-
-.text-white {
-  color: var(--text-white);
-}
-
-
-/* CSS Reset */
+/* ------------------------ */
+/*     GLOBAL RESET         */
+/* ------------------------ */
 * {
   margin: 0;
   padding: 0;
@@ -33,220 +29,88 @@
 body {
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  font-family: var(--font-inter);
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Prototype Links (v5.6.0) */
-a.prototype-link {
-  text-decoration: none;
-  color: inherit;
-  display: contents;
-}
-
-.text-3 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
+/* ------------------------ */
+/*       PAGE WRAPPER       */
+/* ------------------------ */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 24px;
+  max-width: 500px;
   text-align: center;
-  font-family: var(--font-family-instrument-sans);
-  font-weight: 700;
-  font-size: 13px;
-  text-decoration: none;
-  text-transform: none;
 }
 
-.node-2 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
+/* ------------------------ */
+/*        TEXT STYLES       */
+/* ------------------------ */
+.text-3 {
+  font-family: var(--font-instrument);
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .text-4 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: center;
-  font-family: var(--font-family-instrument-sans);
-  font-weight: 700;
+  font-family: var(--font-instrument);
   font-size: 13px;
-  text-decoration: none;
-  text-transform: none;
-  font-family: var(--font-family-instrument-sans);
+  color: var(--gray-light);
   font-weight: 700;
-  font-size: 13px;
-  text-decoration: none;
-  text-transform: none;
-  color: var(--text-rgb-183-180-180);
-  font-family: var(--font-family-instrument-sans);
-  font-weight: 700;
-  font-size: 13px;
-  text-decoration: none;
-  text-transform: none;
-  color: var(--text-rgb-183-180-180);
 }
 
-.rectangle-2-6 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  box-shadow: 7px 7px 4px 0px rgba(0,0,0,0.5);
-  border-radius: 20px;
-}
-
-.text-7 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: center;
-  font-family: var(--font-family-inter);
-  font-weight: 700;
-  font-size: 30px;
-  text-decoration: none;
-  text-transform: none;
-  color: var(--text-white);
-}
-
-.component-1 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  border-radius: 1000px;
-}
-
-.rectangle-3-9 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  box-shadow: 7px 7px 4px 0px rgba(0,0,0,0.5);
-  border-radius: 20px;
-}
-
-.text-10 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: center;
-  font-family: var(--font-family-inter);
-  font-weight: 700;
-  font-size: 30px;
-  text-decoration: none;
-  text-transform: none;
-  color: var(--text-white);
-}
-
-.component-2 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-}
-
-.rectangle-4-12 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  box-shadow: 7px 7px 4px 0px rgba(0,0,0,0.5);
-  border-radius: 20px;
-}
-
-.text-13 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: center;
-  font-family: var(--font-family-inter);
-  font-weight: 700;
-  font-size: 30px;
-  text-decoration: none;
-  text-transform: none;
-  color: var(--text-white);
-}
-
-.component-3 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-}
-
-.rectangle-5-15 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  box-shadow: 7px 7px 4px 0px rgba(0,0,0,0.5);
-  border-radius: 20px;
-}
-
-.text-16 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: center;
-  font-family: var(--font-family-inter);
-  font-weight: 700;
-  font-size: 30px;
-  text-decoration: none;
-  text-transform: none;
-  color: var(--text-white);
-}
-
-.component-4 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
+.text-rgb-183-180-180 {
+  color: var(--gray-light);
 }
 
 .text-17 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: center;
-  font-family: var(--font-family-instrument-sans);
-  font-weight: 700;
+  font-family: var(--font-instrument);
   font-size: 20px;
-  text-decoration: none;
-  text-transform: none;
+  font-weight: 700;
 }
 
 .text-18 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  text-align: center;
-  font-family: var(--font-family-instrument-sans);
+  font-family: var(--font-instrument);
+  font-size: 60px;
   font-weight: 700;
-  font-size: 90px;
-  text-decoration: none;
-  text-transform: none;
 }
 
-.node-19 {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  box-shadow: 17px 17px 10px 0px rgba(0,0,0,0.5);
+/* ------------------------ */
+/*        BUTTON BLOCKS     */
+/* ------------------------ */
+.button {
   width: 100%;
-  height: auto;
+  padding: 16px 0;
+  background: var(--button-bg);
+  border-radius: 20px;
+  box-shadow: 7px 7px 4px rgba(0,0,0,0.4);
 }
 
-.iphone-16-2-1 {
-@media (max-width: 1440px) {
-  .iphone-16-2-1 {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
+.btn-text {
+  color: var(--white);
+  font-family: var(--font-inter);
+  font-size: 24px;
+  font-weight: 700;
 }
 
+/* ------------------------ */
+/*         ICON             */
+/* ------------------------ */
+.node-3 {
+  width: 140px;
+  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.4));
+}
+
+/* ------------------------ */
+/*       RESPONSIVE         */
+/* ------------------------ */
 @media (max-width: 768px) {
-  .iphone-16-2-1 {
-    padding-left: 16px;
-    padding-right: 16px;
+  .text-18 {
+    font-size: 48px;
   }
-}
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
 }
