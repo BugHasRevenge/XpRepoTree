@@ -1,46 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Exported from Figma">
-  <title>XP Repo Tree</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XP App Source</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+        body {
+            font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(180deg, #9253B7 0%, #2C1232 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
 
-  <!-- FIXED CSS LINK -->
-  <link rel="stylesheet" href="https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/main/styles.css" />
+        body::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(221, 13, 255, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 30px); }
+        }
+
+        .container {
+            text-align: center;
+            max-width: 400px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .icon-container {
+            margin-bottom: 40px;
+            animation: iconFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .app-icon {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #A66BC9 0%, #8B5BB5 100%);
+            border-radius: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 60px rgba(166, 107, 201, 0.4);
+            position: relative;
+            transition: transform 0.3s ease;
+            animation: iconGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes iconGlow {
+            0%, 100% { box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 40px rgba(166, 107, 201, 0.4); }
+            50% { box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 80px rgba(166, 107, 201, 0.8); }
+        }
+
+        .app-icon:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .app-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 32px;
+            padding: 2px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.3), rgba(255,255,255,0.05));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .icon-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 32px;
+        }
+
+        h1 {
+            font-size: 72px;
+            font-weight: 700;
+            background: linear-gradient(180deg, #FFFFFF 0%, #D16EFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: -2px;
+            font-family: 'Instrument Sans', sans-serif;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 30px rgba(209, 110, 255, 0.6)); }
+            50% { filter: drop-shadow(0 0 50px rgba(209, 110, 255, 1)); }
+        }
+
+        .subtitle {
+            font-size: 24px;
+            background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 50px;
+            font-weight: 700;
+            font-family: 'Instrument Sans', sans-serif;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .button {
+            padding: 20px 36px;
+            border: none;
+            border-radius: 20px;
+            font-size: 26px;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            font-family: 'Instrument Sans', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .button:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .button-slidestore {
+            background: linear-gradient(90deg, #3140FF 0%, #DD0DFF 50%, #08DEFD 100%);
+        }
+
+        .button-altstore {
+            background: linear-gradient(90deg, #129499 0%, #046679 100%);
+        }
+
+        .button-feather {
+            background: linear-gradient(90deg, #8691FA 0%, #5A66D8 100%);
+        }
+
+        .button-livecontainer {
+            background: linear-gradient(90deg, #0083FF 0%, #0050FF 100%);
+        }
+
+        .note {
+            margin-top: 45px;
+            font-size: 16px;
+            background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.6;
+            font-weight: 700;
+            font-family: 'Instrument Sans', sans-serif;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="icon-container">
+            <div class="app-icon">
+                <img src="https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/refs/heads/main/images/XP_New-iOS-Default-1024x10241x.png" alt="XP App" class="icon-image">
+            </div>
+        </div>
 
-<div class="page">
+        <h1>XP App</h1>
+        <p class="subtitle">Source</p>
 
-  <p class="text-3">Note: You must have your chosen sideloader already installed for the redirector to work.</p>
+        <div class="buttons">
+            <button class="button button-slidestore" onclick="window.location.href='sidestore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to SlideStore</span></button>
+            <button class="button button-altstore" onclick="window.location.href='altstore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to AltStore</span></button>
+            <button class="button button-feather" onclick="window.location.href='feather://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to Feather</span></button>
+            <button class="button button-livecontainer" onclick="window.location.href='livecontainer://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to LiveContainer</span></button>
+        </div>
 
-  <p class="text-4">Created by <span class="text-rgb-183-180-180">BugHasRevenge</span></p>
-
-  <div class="button component-1">
-    <p class="btn-text">Add to SideStore</p>
-  </div>
-
-  <div class="button component-2">
-    <p class="btn-text">Add to AltStore</p>
-  </div>
-
-  <div class="button component-3">
-    <p class="btn-text">Add to Feather</p>
-  </div>
-
-  <div class="button component-4">
-    <p class="btn-text">Add to LiveContainer</p>
-  </div>
-
-  <p class="text-17">Source</p>
-  <p class="text-18">XP App</p>
-
-  <img src="images/node-3.png" class="node-3" alt="XP Icon" />
-
-</div>
-
+        <p class="note">
+            Note: You must have your chosen<br>
+            sideloader already installed for the<br>
+            redirection to work.
+        </p>
+    </div>
 </body>
 </html>
