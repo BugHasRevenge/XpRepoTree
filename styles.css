@@ -1,95 +1,252 @@
-/* --- GENERAL LAYOUT --- */
+
+/* Add font files for Instrument Sans */
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('fonts/instrument-sans.woff2') format('woff2'),
+       url('fonts/instrument-sans.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --font-family-instrument-sans: 'Instrument Sans', sans-serif;
+  --font-family-inter: 'Inter', sans-serif;
+  --text-rgb-183-180-180: rgba(183, 180, 180, 1);
+  --text-white: rgba(255, 255, 255, 1);
+}
+
+.text-rgb-183-180-180 {
+  color: var(--text-rgb-183-180-180);
+}
+
+.text-white {
+  color: var(--text-white);
+}
+
+
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-  background: linear-gradient(180deg, #7a2bc2 0%, #2f0940 100%);
-  color: white;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container {
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
-  padding: 20px 0;
-}
-
-/* --- ICON --- */
-.icon {
-  width: 120px;
-  height: 120px;
-  margin-bottom: 20px;
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-}
-
-/* --- TEXT --- */
-.title {
-  font-size: 46px;
-  font-weight: 700;
-  margin: 0;
-}
-
-.subtitle {
-  margin: 4px 0 30px;
-  color: #d6d6d6;
-  font-size: 18px;
-}
-
-/* --- BUTTONS --- */
-.buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 50px;
-}
-
-.btn {
-  display: block;
   width: 100%;
-  padding: 16px;
-  border-radius: 14px;
-  font-size: 18px;
-  font-weight: 600;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prototype Links (v5.6.0) */
+a.prototype-link {
   text-decoration: none;
-  color: white;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  color: inherit;
+  display: contents;
 }
 
-/* Individual button gradients */
-.btn-sidestore {
-  background: linear-gradient(90deg, #4c0fff, #66e0ff);
-}
-
-.btn-altstore {
-  background: linear-gradient(90deg, #008b75, #00c4a3);
-}
-
-.btn-feather {
-  background: linear-gradient(90deg, #b0b9ff, #8aa0ff);
-}
-
-.btn-livecontainer {
-  background: linear-gradient(90deg, #0044ff, #0091ff);
-}
-
-/* --- FOOTER --- */
-.footer {
-  color: #dddddd;
-  font-size: 14px;
-}
-
-.link {
-  color: #6caaff;
-  text-decoration: none;
-}
-
-.note {
-  margin-top: 12px;
+.text-3 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  text-align: center;
+  font-family: var(--font-family-instrument-sans);
+  font-weight: 700;
   font-size: 13px;
-  color: #b9b9b9;
-  line-height: 1.4;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.node-2 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+.text-4 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  text-align: center;
+  font-family: var(--font-family-instrument-sans);
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  text-transform: none;
+  font-family: var(--font-family-instrument-sans);
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  text-transform: none;
+  color: var(--text-rgb-183-180-180);
+  font-family: var(--font-family-instrument-sans);
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  text-transform: none;
+  color: var(--text-rgb-183-180-180);
+}
+
+.rectangle-2-6 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  box-shadow: 7px 7px 4px 0px rgba(0,0,0,0.5);
+  border-radius: 20px;
+}
+
+.text-7 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  text-align: center;
+  font-family: var(--font-family-inter);
+  font-weight: 700;
+  font-size: 30px;
+  text-decoration: none;
+  text-transform: none;
+  color: var(--text-white);
+}
+
+.component-1 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  border-radius: 1000px;
+}
+
+.rectangle-3-9 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  box-shadow: 7px 7px 4px 0px rgba(0,0,0,0.5);
+  border-radius: 20px;
+}
+
+.text-10 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  text-align: center;
+  font-family: var(--font-family-inter);
+  font-weight: 700;
+  font-size: 30px;
+  text-decoration: none;
+  text-transform: none;
+  color: var(--text-white);
+}
+
+.component-2 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+.rectangle-4-12 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  box-shadow: 7px 7px 4px 0px rgba(0,0,0,0.5);
+  border-radius: 20px;
+}
+
+.text-13 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  text-align: center;
+  font-family: var(--font-family-inter);
+  font-weight: 700;
+  font-size: 30px;
+  text-decoration: none;
+  text-transform: none;
+  color: var(--text-white);
+}
+
+.component-3 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+.rectangle-5-15 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  box-shadow: 7px 7px 4px 0px rgba(0,0,0,0.5);
+  border-radius: 20px;
+}
+
+.text-16 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  text-align: center;
+  font-family: var(--font-family-inter);
+  font-weight: 700;
+  font-size: 30px;
+  text-decoration: none;
+  text-transform: none;
+  color: var(--text-white);
+}
+
+.component-4 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+.text-17 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  text-align: center;
+  font-family: var(--font-family-instrument-sans);
+  font-weight: 700;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.text-18 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  text-align: center;
+  font-family: var(--font-family-instrument-sans);
+  font-weight: 700;
+  font-size: 90px;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.node-19 {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  box-shadow: 17px 17px 10px 0px rgba(0,0,0,0.5);
+  width: 100%;
+  height: auto;
+}
+
+.iphone-16-2-1 {
+@media (max-width: 1440px) {
+  .iphone-16-2-1 {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .iphone-16-2-1 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
 }
