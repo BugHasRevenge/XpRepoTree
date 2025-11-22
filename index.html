@@ -227,6 +227,71 @@
             line-height: 1.6;
             font-weight: 700;
             font-family: 'Instrument Sans', sans-serif;
+            margin-bottom: 30px;
+        }
+
+        .credit {
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Instrument Sans', sans-serif;
+            margin-top: 20px;
+        }
+
+        .credit-made {
+            background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .credit-name {
+            background: linear-gradient(90deg, #00D9FF 0%, #0050FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 48px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .app-icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .button {
+                font-size: 20px;
+                padding: 16px 28px;
+            }
+
+            .note, .credit {
+                font-size: 14px;
+            }
+
+            .icon-container {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .button {
+                font-size: 18px;
+                padding: 14px 24px;
+            }
         }
     </style>
 </head>
@@ -252,6 +317,10 @@
             Note: You must have your chosen<br>
             sideloader already installed for the<br>
             redirection to work.
+        </p>
+
+        <p class="credit">
+            <span class="credit-made">Made by</span> <span class="credit-name">BugHasRevenge</span>
         </p>
     </div>
 </body>
