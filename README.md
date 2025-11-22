@@ -1,2 +1,2 @@
-# www.bughasrevenge.github.io/XpRepoTree
+# Xp App Repo Tree
 A xp app repo tree site
