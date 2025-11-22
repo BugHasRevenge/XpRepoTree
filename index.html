@@ -16,13 +16,14 @@
 
         body {
             font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(180deg, #9253B7 0%, #2C1232 100%);
+            background: linear-gradient(135deg, #9253B7 0%, #2C1232 100%);
             background-size: 200% 200%;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            padding-bottom: 40px;
             position: relative;
             overflow: hidden;
             animation: gradientShift 15s ease-in-out infinite;
@@ -273,9 +274,19 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            cursor: pointer;
+            transition: filter 0.3s ease;
+        }
+
+        .credit-name:hover {
+            filter: brightness(1.2);
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-bottom: 60px;
+            }
+
             h1 {
                 font-size: 56px;
             }
@@ -301,6 +312,11 @@
             .icon-container {
                 margin-bottom: 35px;
                 margin-top: 40px;
+            }
+
+            .note {
+                margin-top: 35px;
+                margin-bottom: 20px;
             }
         }
 
@@ -345,7 +361,7 @@
         </p>
 
         <p class="credit">
-            <span class="credit-made">Made by</span> <span class="credit-name">BugHasRevenge</span>
+            <span class="credit-made">Made by</span> <span class="credit-name" onclick="window.open('https://github.com/BugHasRevenge', '_blank')">BugHasRevenge</span>
         </p>
     </div>
 </body>
