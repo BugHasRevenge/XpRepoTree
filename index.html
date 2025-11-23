@@ -7,8 +7,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="XP App">
+    <meta name="supported-color-schemes" content="dark">
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/refs/heads/main/images/XP_New-iOS-Default-1024x10241x.png">
-    <title>XP App Source</title>
+    <title>XP App Source - iOS 26</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -19,18 +20,26 @@
             box-sizing: border-box;
         }
 
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
         body {
             font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #9253B7 0%, #2C1232 80%);
             background-attachment: fixed;
             min-height: 100vh;
+            min-height: -webkit-fill-available;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
             padding-bottom: 40px;
+            padding-bottom: env(safe-area-inset-bottom, 40px);
             position: relative;
             overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            -webkit-tap-highlight-color: transparent;
         }
 
         @keyframes gradientShift {
@@ -170,6 +179,9 @@
             font-family: 'Instrument Sans', sans-serif;
             position: relative;
             overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            user-select: none;
         }
 
         .button::before {
@@ -215,6 +227,7 @@
 
         .button:active {
             transform: translateY(0) scale(0.98);
+            opacity: 0.9;
         }
 
         .button span {
@@ -335,7 +348,7 @@
 <body>
     <div class="container">
         <div class="icon-container">
-            <div class="app-icon" onclick="window.location.href='pstream.mov'">
+            <div class="app-icon" onclick="window.location.href='https://pstream.mov/'">
                 <img src="https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/refs/heads/main/images/XP_New-iOS-Default-1024x10241x.png" alt="XP App" class="icon-image">
             </div>
         </div>
