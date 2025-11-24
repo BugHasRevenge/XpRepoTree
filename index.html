@@ -7,345 +7,72 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="XP App">
-    <meta name="supported-color-schemes" content="dark">
+    <meta name="supported-color-schemes" content="dark light">
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/refs/heads/main/images/XP_New-iOS-Default-1024x10241x.png">
-    <title>XP App Source - iOS 26</title>
+    <title>XP App Source - iOS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            -webkit-text-size-adjust: 100%;
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-            position: fixed;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; width: 100%; overflow-x: hidden; }
         body {
-            font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, #9253B7 0%, #2C1232 80%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            min-height: -webkit-fill-available;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            padding-bottom: 40px;
-            padding-bottom: env(safe-area-inset-bottom, 40px);
-            position: relative;
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
-            -webkit-tap-highlight-color: transparent;
+            width: 100vw; min-height: 100vh;
+            padding: 40px 20px 100px 20px;
+            position: relative; overflow-x: hidden;
         }
-
-        @keyframes gradientShift {
-            0%, 100% {
-                background-position: 0% 50%;
-            }
-            25% {
-                background-position: 100% 50%;
-            }
-            50% {
-                background-position: 50% 100%;
-            }
-            75% {
-                background-position: 0% 50%;
-            }
-        }
-
         body::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
+            content: ''; position: absolute; width: 600px; height: 600px;
             background: radial-gradient(circle, rgba(146, 83, 183, 0.4) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -250px;
-            left: -250px;
-            animation: float 20s ease-in-out infinite;
+            border-radius: 50%; top: -250px; left: -250px;
         }
-
-        @keyframes float {
-            0%, 100% { 
-                transform: translate(0, 0) rotate(0deg);
-            }
-            33% { 
-                transform: translate(40px, -30px) rotate(120deg);
-            }
-            66% { 
-                transform: translate(-20px, 40px) rotate(240deg);
-            }
-        }
-
-        .container {
-            text-align: center;
-            max-width: 400px;
-            position: relative;
-            z-index: 1;
-            width: 100%;
-        }
-
-        .icon-container {
-            margin-bottom: 40px;
-            animation: iconFloat 6s ease-in-out infinite;
-        }
-
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
+        .container { text-align: center; max-width: 400px; margin: 0 auto; position: relative; z-index: 1; }
+        .icon-container { margin-bottom: 20px; }
         .app-icon {
-            width: 140px;
-            height: 140px;
+            width: 120px; height: 120px;
             background: linear-gradient(135deg, #A66BC9 0%, #8B5BB5 100%);
-            border-radius: 32px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 60px rgba(166, 107, 201, 0.4);
-            position: relative;
-            transition: transform 0.3s ease;
-            animation: iconGlow 4s ease-in-out infinite;
-            cursor: pointer;
+            border-radius: 32px; display: inline-flex; justify-content: center; align-items: center;
         }
-
-        @keyframes iconGlow {
-            0%, 100% { box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 40px rgba(166, 107, 201, 0.4); }
-            50% { box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 80px rgba(166, 107, 201, 0.8); }
-        }
-
-        .app-icon:hover {
-            transform: scale(1.05) rotate(2deg);
-        }
-
-
-
-        .icon-image {
-            width: 100%;
-            height: 100%;
-            border-radius: 32px;
-        }
-
+        .icon-image { width: 100%; height: 100%; border-radius: 32px; }
         h1 {
-            font-size: 80px;
-            font-weight: 700;
+            font-size: 64px; font-weight: 700;
             background: linear-gradient(180deg, #FFFFFF 0%, #D16EFF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-            letter-spacing: -2px;
-            font-family: 'Instrument Sans', sans-serif;
-            animation: titleGlow 3s ease-in-out infinite;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
-        @keyframes titleGlow {
-            0%, 100% { filter: drop-shadow(0 0 30px rgba(209, 110, 255, 0.6)); }
-            50% { filter: drop-shadow(0 0 50px rgba(209, 110, 255, 1)); }
-        }
-
         .subtitle {
-            font-size: 28px;
+            font-size: 24px;
             background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 50px;
-            font-weight: 700;
-            font-family: 'Instrument Sans', sans-serif;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 30px; font-weight: 700;
         }
-
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
+        .buttons { display: flex; flex-direction: column; gap: 16px; }
         .button {
-            padding: 20px 36px;
-            border: none;
-            border-radius: 20px;
-            font-size: 26px;
-            font-weight: 700;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-            font-family: 'Instrument Sans', sans-serif;
-            position: relative;
-            overflow: hidden;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-            user-select: none;
+            padding: 18px 32px; border: none; border-radius: 20px;
+            font-size: 22px; font-weight: 700; color: white;
+            cursor: pointer; transition: all 0.3s ease;
         }
-
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .button:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .button span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .button:active {
-            transform: translateY(0) scale(0.98);
-            opacity: 0.9;
-        }
-
-        .button span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .button-slidestore {
-            background: linear-gradient(90deg, #3140FF 0%, #DD0DFF 50%, #08DEFD 100%);
-        }
-
-        .button-altstore {
-            background: linear-gradient(90deg, #129499 0%, #046679 100%);
-        }
-
-        .button-feather {
-            background: linear-gradient(90deg, #8691FA 0%, #5A66D8 100%);
-        }
-
-        .button-livecontainer {
-            background: linear-gradient(90deg, #0083FF 0%, #0050FF 100%);
-        }
+        .button-slidestore { background: linear-gradient(90deg, #3140FF 0%, #DD0DFF 50%, #08DEFD 100%); }
+        .button-altstore { background: linear-gradient(90deg, #129499 0%, #046679 100%); }
+        .button-feather { background: linear-gradient(90deg, #8691FA 0%, #5A66D8 100%); }
+        .button-livecontainer { background: linear-gradient(90deg, #0083FF 0%, #0050FF 100%); }
 
         .note {
-            margin-top: 45px;
-            font-size: 16px;
+            margin-top: 35px; font-size: 15px; line-height: 1.6;
             background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.6;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             font-weight: 700;
-            font-family: 'Instrument Sans', sans-serif;
-            margin-bottom: 30px;
         }
-
-        .credit {
-            font-size: 16px;
-            font-weight: 700;
-            font-family: 'Instrument Sans', sans-serif;
-            margin-top: 20px;
-        }
-
+        .credit { font-size: 15px; font-weight: 700; margin-top: 15px; }
         .credit-made {
             background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
         .credit-name {
             background: linear-gradient(90deg, #00D9FF 0%, #0050FF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             cursor: pointer;
-            transition: filter 0.3s ease;
-        }
-
-        .credit-name:hover {
-            filter: brightness(1.2);
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding-bottom: 60px;
-            }
-
-            h1 {
-                font-size: 64px;
-            }
-
-            .subtitle {
-                font-size: 24px;
-            }
-
-            .app-icon {
-                width: 120px;
-                height: 120px;
-            }
-
-            .button {
-                font-size: 22px;
-                padding: 18px 32px;
-            }
-
-            .note, .credit {
-                font-size: 15px;
-            }
-
-            .icon-container {
-                margin-bottom: 35px;
-                margin-top: 20px;
-            }
-
-            .note {
-                margin-top: 35px;
-                margin-bottom: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 58px;
-            }
-
-            .subtitle {
-                font-size: 22px;
-            }
-
-            .button {
-                font-size: 21px;
-                padding: 17px 30px;
-            }
         }
     </style>
 </head>
@@ -353,7 +80,7 @@
     <div class="container">
         <div class="icon-container">
             <div class="app-icon" onclick="window.location.href='https://pstream.mov/'">
-                <img src="https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/refs/heads/main/images/XP_New-iOS-Default-1024x10241x.png" alt="XP App" class="icon-image">
+                <img src="https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/refs/heads/main/images/XP_New-iOS-Default-1024x10241x.png" class="icon-image" />
             </div>
         </div>
 
@@ -361,10 +88,10 @@
         <p class="subtitle">Source</p>
 
         <div class="buttons">
-            <button class="button button-slidestore" onclick="window.location.href='sidestore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to SlideStore</span></button>
-            <button class="button button-altstore" onclick="window.location.href='altstore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to AltStore</span></button>
-            <button class="button button-feather" onclick="window.location.href='feather://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to Feather</span></button>
-            <button class="button button-livecontainer" onclick="window.location.href='livecontainer://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to LiveContainer</span></button>
+            <button class="button button-slidestore" onclick="window.location.href='sidestore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'">Add to SlideStore</button>
+            <button class="button button-altstore" onclick="window.location.href='altstore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'">Add to AltStore</button>
+            <button class="button button-feather" onclick="window.location.href='feather://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'">Add to Feather</button>
+            <button class="button button-livecontainer" onclick="window.location.href='livecontainer://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'">Add to LiveContainer</button>
         </div>
 
         <p class="note">
