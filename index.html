@@ -23,7 +23,9 @@
         html {
             -webkit-text-size-adjust: 100%;
             width: 100%;
-            overflow-x: hidden;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
         }
 
         body {
@@ -35,8 +37,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px) env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
-            position: relative;
+            padding: 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
             overflow: hidden;
             -webkit-overflow-scrolling: touch;
             -webkit-tap-highlight-color: transparent;
@@ -131,11 +135,11 @@
 
         .container {
             text-align: center;
-            max-width: 400px;
+            max-width: 500px;
+            width: 100%;
             position: relative;
             z-index: 1;
-            width: 100%;
-            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .icon-container {
@@ -462,6 +466,73 @@
         .device-desktop .theme-toggle svg {
             width: 28px;
             height: 28px;
+        }
+
+        /* Landscape mode adjustments */
+        @media (orientation: landscape) and (max-height: 500px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 30px;
+                max-width: 900px;
+                align-items: center;
+                text-align: left;
+            }
+
+            .icon-container {
+                margin-bottom: 0;
+                grid-row: 1 / 4;
+            }
+
+            h1, .subtitle {
+                text-align: left;
+            }
+
+            .buttons {
+                grid-column: 2;
+            }
+
+            .note, .credit {
+                grid-column: 2;
+                text-align: left;
+            }
+
+            .app-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            h1 {
+                font-size: 36px;
+                margin-bottom: 2px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+
+            .button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            .buttons {
+                gap: 8px;
+            }
+
+            .note, .credit {
+                font-size: 11px;
+            }
+
+            .note {
+                margin-top: 15px;
+                margin-bottom: 8px;
+            }
         }
     </style>
 </head>
