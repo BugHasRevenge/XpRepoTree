@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#2C1232">
+    <meta name="theme-color" content="#280330">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="XP App">
-    <meta name="supported-color-schemes" content="dark">
+    <meta name="supported-color-schemes" content="dark light">
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/refs/heads/main/images/XP_New-iOS-Default-1024x10241x.png">
-    <title>XP App Source - iOS 26</title>
+    <title>XP App Source - iOS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -27,31 +27,24 @@
         }
 
         body {
-            font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #9253B7 0%, #2C1232 80%);
+            font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #6F2D80 0%, #280330 80%);
             width: 100vw;
-            min-height: 100vh;
-            display: block;
-            padding: 60px 20px 120px 20px;
+            height: 100vh;
+            height: -webkit-fill-available;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px) env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
             position: relative;
-            overflow-x: hidden;
+            overflow: hidden;
             -webkit-overflow-scrolling: touch;
             -webkit-tap-highlight-color: transparent;
+            transition: background 0.3s ease;
         }
 
-        @keyframes gradientShift {
-            0%, 100% {
-                background-position: 0% 50%;
-            }
-            25% {
-                background-position: 100% 50%;
-            }
-            50% {
-                background-position: 50% 100%;
-            }
-            75% {
-                background-position: 0% 50%;
-            }
+        body.light-mode {
+            background: linear-gradient(135deg, #9253B7 0%, #2C1232 80%);
         }
 
         body::before {
@@ -64,6 +57,11 @@
             top: -250px;
             left: -250px;
             animation: float 20s ease-in-out infinite;
+            transition: background 0.3s ease;
+        }
+
+        body.light-mode::before {
+            background: radial-gradient(circle, rgba(146, 83, 183, 0.4) 0%, transparent 70%);
         }
 
         @keyframes float {
@@ -78,6 +76,59 @@
             }
         }
 
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        body.light-mode .theme-toggle {
+            background: rgba(44, 18, 50, 0.1);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .sun-icon {
+            display: none;
+            stroke: #2C1232;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .moon-icon {
+            display: block;
+            fill: white;
+        }
+
+        body.light-mode .sun-icon {
+            display: block;
+        }
+
+        body.light-mode .moon-icon {
+            display: none;
+        }
+
         .container {
             text-align: center;
             max-width: 400px;
@@ -88,55 +139,66 @@
         }
 
         .icon-container {
-            margin-bottom: 20px;
-            animation: iconFloat 6s ease-in-out infinite;
+            margin-bottom: 15px;
         }
 
         @keyframes iconFloat {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-5px); }
         }
 
         .app-icon {
-            width: 140px;
-            height: 140px;
+            width: 100px;
+            height: 100px;
             background: linear-gradient(135deg, #A66BC9 0%, #8B5BB5 100%);
-            border-radius: 32px;
+            border-radius: 28px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 60px rgba(166, 107, 201, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(166, 107, 201, 0.4);
             position: relative;
-            transition: transform 0.3s ease;
-            animation: iconGlow 4s ease-in-out infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: iconGlow 4s ease-in-out infinite, iconFloat 6s ease-in-out infinite;
             cursor: pointer;
         }
 
+        body.light-mode .app-icon {
+            background: linear-gradient(135deg, #A66BC9 0%, #8B5BB5 100%);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(166, 107, 201, 0.4);
+        }
+
         @keyframes iconGlow {
-            0%, 100% { box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 40px rgba(166, 107, 201, 0.4); }
-            50% { box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 80px rgba(166, 107, 201, 0.8); }
+            0%, 100% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(166, 107, 201, 0.4); }
+            50% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 60px rgba(166, 107, 201, 0.8); }
+        }
+
+        body.light-mode .app-icon {
+            animation: iconGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes iconGlowLight {
+            0%, 100% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(166, 107, 201, 0.4); }
+            50% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 60px rgba(166, 107, 201, 0.8); }
         }
 
         .app-icon:hover {
             transform: scale(1.05) rotate(2deg);
         }
 
-
-
         .icon-image {
             width: 100%;
             height: 100%;
-            border-radius: 32px;
+            border-radius: 28px;
         }
 
         h1 {
-            font-size: 80px;
+            font-size: 52px;
             font-weight: 700;
             background: linear-gradient(180deg, #FFFFFF 0%, #D16EFF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             letter-spacing: -2px;
             font-family: 'Instrument Sans', sans-serif;
             animation: titleGlow 3s ease-in-out infinite;
@@ -148,27 +210,34 @@
         }
 
         .subtitle {
-            font-size: 28px;
+            font-size: 20px;
             background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             font-weight: 700;
             font-family: 'Instrument Sans', sans-serif;
+        }
+
+        body.light-mode .subtitle {
+            background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .buttons {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
         }
 
         .button {
-            padding: 20px 36px;
+            padding: 14px 28px;
             border: none;
-            border-radius: 20px;
-            font-size: 26px;
+            border-radius: 18px;
+            font-size: 18px;
             font-weight: 700;
             color: white;
             cursor: pointer;
@@ -180,19 +249,6 @@
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             user-select: none;
-        }
-
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
         }
 
         .button::before {
@@ -216,11 +272,6 @@
         .button:hover {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .button span {
-            position: relative;
-            z-index: 1;
         }
 
         .button:active {
@@ -250,26 +301,40 @@
         }
 
         .note {
-            margin-top: 45px;
-            font-size: 16px;
+            margin-top: 25px;
+            font-size: 13px;
             background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.6;
+            line-height: 1.5;
             font-weight: 700;
             font-family: 'Instrument Sans', sans-serif;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
+        }
+
+        body.light-mode .note {
+            background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .credit {
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 700;
             font-family: 'Instrument Sans', sans-serif;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .credit-made {
+            background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.light-mode .credit-made {
             background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -289,62 +354,135 @@
             filter: brightness(1.2);
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding-bottom: 60px;
-            }
-
-            h1 {
-                font-size: 64px;
-            }
-
-            .subtitle {
-                font-size: 24px;
-                margin-bottom: 30px;
-            }
-
-            .app-icon {
-                width: 120px;
-                height: 120px;
-            }
-
-            .button {
-                font-size: 22px;
-                padding: 18px 32px;
-            }
-
-            .note, .credit {
-                font-size: 15px;
-            }
-
-            .icon-container {
-                margin-bottom: 15px;
-                margin-top: 20px;
-            }
-
-            .note {
-                margin-top: 35px;
-                margin-bottom: 20px;
-            }
+        /* iPhone specific styles */
+        .device-iphone .app-icon {
+            width: 100px;
+            height: 100px;
         }
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 58px;
-            }
+        .device-iphone h1 {
+            font-size: 52px;
+        }
 
-            .subtitle {
-                font-size: 22px;
-            }
+        .device-iphone .subtitle {
+            font-size: 20px;
+        }
 
-            .button {
-                font-size: 21px;
-                padding: 17px 30px;
-            }
+        .device-iphone .button {
+            font-size: 18px;
+            padding: 14px 28px;
+        }
+
+        .device-iphone .note,
+        .device-iphone .credit {
+            font-size: 13px;
+        }
+
+        /* iPad specific styles */
+        .device-ipad .app-icon {
+            width: 140px;
+            height: 140px;
+        }
+
+        .device-ipad h1 {
+            font-size: 72px;
+        }
+
+        .device-ipad .subtitle {
+            font-size: 28px;
+            margin-bottom: 35px;
+        }
+
+        .device-ipad .button {
+            font-size: 24px;
+            padding: 20px 40px;
+        }
+
+        .device-ipad .buttons {
+            gap: 18px;
+        }
+
+        .device-ipad .note,
+        .device-ipad .credit {
+            font-size: 16px;
+        }
+
+        .device-ipad .icon-container {
+            margin-bottom: 25px;
+        }
+
+        .device-ipad .note {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* Desktop specific styles */
+        .device-desktop .app-icon {
+            width: 160px;
+            height: 160px;
+        }
+
+        .device-desktop h1 {
+            font-size: 80px;
+        }
+
+        .device-desktop .subtitle {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .device-desktop .button {
+            font-size: 26px;
+            padding: 20px 42px;
+        }
+
+        .device-desktop .buttons {
+            gap: 20px;
+        }
+
+        .device-desktop .note,
+        .device-desktop .credit {
+            font-size: 17px;
+        }
+
+        .device-desktop .icon-container {
+            margin-bottom: 30px;
+        }
+
+        .device-desktop .note {
+            margin-top: 45px;
+            margin-bottom: 25px;
+        }
+
+        .device-desktop .theme-toggle {
+            width: 60px;
+            height: 60px;
+        }
+
+        .device-desktop .theme-toggle svg {
+            width: 28px;
+            height: 28px;
         }
     </style>
 </head>
 <body>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="sun-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
     <div class="container">
         <div class="icon-container">
             <div class="app-icon" onclick="window.location.href='https://pstream.mov/'">
@@ -372,5 +510,42 @@
             <span class="credit-made">Made by</span> <span class="credit-name" onclick="window.open('https://github.com/BugHasRevenge', '_blank')">BugHasRevenge</span>
         </p>
     </div>
+
+    <script>
+        // Device detection and optimization
+        function detectDevice() {
+            const ua = navigator.userAgent;
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            
+            // Detect device type
+            if (/iPad/.test(ua) || (width >= 768 && /Macintosh/.test(ua) && 'ontouchend' in document)) {
+                document.body.classList.add('device-ipad');
+            } else if (/iPhone/.test(ua)) {
+                document.body.classList.add('device-iphone');
+            } else {
+                document.body.classList.add('device-desktop');
+            }
+        }
+
+        // Run on load
+        detectDevice();
+
+        // Check for saved theme preference or default to dark mode
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            document.body.classList.add('light-mode');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+            localStorage.setItem('theme', theme);
+            
+            // Update theme-color meta tag
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            metaTheme.setAttribute('content', theme === 'light' ? '#2C1232' : '#280330');
+        }
+    </script>
 </body>
 </html>
