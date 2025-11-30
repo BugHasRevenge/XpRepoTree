@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -142,6 +142,18 @@
             position: relative;
             z-index: 1;
             padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-top {
+            flex: 0;
+        }
+
+        .content-bottom {
+            flex: 0;
+            margin-top: auto;
+            padding-bottom: 20px;
         }
 
         .icon-container {
@@ -154,17 +166,17 @@
         }
 
         .app-icon {
-            width: 100px;
-            height: 100px;
-            background: transparent;
-            border-radius: 28px;
+            width: 96px;
+            height: 96px;
+            background: linear-gradient(135deg, #A66BC9 0%, #8B5BB5 100%);
+            border-radius: 26px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(166, 107, 201, 0.4);
+            box-shadow: 0 20px 56px rgba(0, 0, 0, 0.5), 0 0 48px rgba(166, 107, 201, 0.4);
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: iconGlow 4s ease-in-out infinite, iconFloat 6s ease-in-out infinite;
+            animation: iconGlow 4s ease-in-out infinite;
             cursor: pointer;
         }
 
@@ -206,7 +218,7 @@
         .icon-image {
             width: 100%;
             height: 100%;
-            border-radius: 28px;
+            border-radius: 26px;
             transition: opacity 0.3s ease;
         }
 
@@ -405,6 +417,10 @@
             font-size: 13px;
         }
 
+        .device-iphone .content-bottom {
+            margin-top: 40px;
+        }
+
         /* iPad specific styles */
         .device-ipad .app-icon {
             width: 140px;
@@ -441,6 +457,10 @@
         .device-ipad .note {
             margin-top: 40px;
             margin-bottom: 20px;
+        }
+
+        .device-ipad .content-bottom {
+            margin-top: 50px;
         }
 
         /* Desktop specific styles */
@@ -489,6 +509,11 @@
         .device-desktop .theme-toggle svg {
             width: 28px;
             height: 28px;
+        }
+
+        .device-desktop .content-bottom {
+            margin-top: 0;
+            padding-bottom: 0;
         }
 
         /* Landscape mode adjustments */
@@ -578,31 +603,35 @@
     </button>
 
     <div class="container">
-        <div class="icon-container">
-            <div class="app-icon" onclick="window.location.href='https://pstream.mov/'">
-                <img src="https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/refs/heads/main/images/XP_New-iOS-Default-1024x10241x.png" alt="XP App" class="icon-image">
+        <div class="content-top">
+            <div class="icon-container">
+                <div class="app-icon" onclick="window.location.href='https://pstream.mov/'">
+                    <img src="https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/refs/heads/main/images/XP_New-iOS-Default-1024x10241x.png" alt="XP App" class="icon-image">
+                </div>
+            </div>
+
+            <h1>XP App</h1>
+            <p class="subtitle">Source</p>
+
+            <div class="buttons">
+                <button class="button button-slidestore" onclick="window.location.href='sidestore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to SlideStore</span></button>
+                <button class="button button-altstore" onclick="window.location.href='altstore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to AltStore</span></button>
+                <button class="button button-feather" onclick="window.location.href='feather://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to Feather</span></button>
+                <button class="button button-livecontainer" onclick="window.location.href='livecontainer://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to LiveContainer</span></button>
             </div>
         </div>
 
-        <h1>XP App</h1>
-        <p class="subtitle">Source</p>
+        <div class="content-bottom">
+            <p class="note">
+                Note: You must have your chosen<br>
+                sideloader already installed for the<br>
+                redirection to work.
+            </p>
 
-        <div class="buttons">
-            <button class="button button-slidestore" onclick="window.location.href='sidestore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to SlideStore</span></button>
-            <button class="button button-altstore" onclick="window.location.href='altstore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to AltStore</span></button>
-            <button class="button button-feather" onclick="window.location.href='feather://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to Feather</span></button>
-            <button class="button button-livecontainer" onclick="window.location.href='livecontainer://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to LiveContainer</span></button>
+            <p class="credit">
+                <span class="credit-made">Made by</span> <span class="credit-name" onclick="window.open('https://github.com/BugHasRevenge', '_blank')">BugHasRevenge</span>
+            </p>
         </div>
-
-        <p class="note">
-            Note: You must have your chosen<br>
-            sideloader already installed for the<br>
-            redirection to work.
-        </p>
-
-        <p class="credit">
-            <span class="credit-made">Made by</span> <span class="credit-name" onclick="window.open('https://github.com/BugHasRevenge', '_blank')">BugHasRevenge</span>
-        </p>
     </div>
 
     <script>
