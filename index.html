@@ -7,8 +7,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="XP App">
-    <meta name="color-scheme" content="only dark">
-    <meta name="supported-color-schemes" content="dark">
+    <meta name="color-scheme" content="light dark">
+    <meta name="supported-color-schemes" content="light dark">
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/refs/heads/main/images/XP_New-iOS-Default-1024x10241x.png">
     <title>XP App Source - iOS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
         }
 
         html, body {
-            color-scheme: only dark !important;
+            color-scheme: only light !important;
         }
 
         html {
@@ -158,7 +158,7 @@
         .content-bottom {
             flex: 0;
             margin-top: auto;
-            padding-bottom: 30px;
+            padding-bottom: 20px;
         }
 
         .icon-container {
@@ -173,7 +173,7 @@
         .app-icon {
             width: 100px;
             height: 100px;
-            border-radius: 43px;
+            border-radius: 23.5px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -221,7 +221,7 @@
         .icon-image {
             width: 100%;
             height: 100%;
-            border-radius: 47px;
+            border-radius: 23.5px;
             transition: opacity 0.3s ease;
             display: block;
         }
@@ -399,18 +399,16 @@
 
         /* iPhone specific styles */
         .device-iphone .app-icon {
-            width: 130px;
-            height: 130px;
+            width: 100px;
+            height: 100px;
         }
 
         .device-iphone h1 {
-            font-size: 64px;
-            margin-bottom: 5px;
+            font-size: 52px;
         }
 
         .device-iphone .subtitle {
-            font-size: 26px;
-            margin-bottom: 28px;
+            font-size: 20px;
         }
 
         .device-iphone .button {
@@ -418,21 +416,13 @@
             padding: 14px 28px;
         }
 
-        .device-iphone .note {
-            font-size: 11px;
-            margin-bottom: 8px;
-        }
-
+        .device-iphone .note,
         .device-iphone .credit {
-            font-size: 10px;
-        }
-
-        .device-iphone .content-top {
-            margin-bottom: -20px;
+            font-size: 13px;
         }
 
         .device-iphone .content-bottom {
-            margin-top: 60px;
+            margin-top: 40px;
         }
 
         /* iPad specific styles */
