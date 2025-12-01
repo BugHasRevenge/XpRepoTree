@@ -158,7 +158,7 @@
         .content-bottom {
             flex: 0;
             margin-top: auto;
-            padding-bottom: 20px;
+            padding-bottom: 30px;
         }
 
         .icon-container {
@@ -221,7 +221,7 @@
         .icon-image {
             width: 100%;
             height: 100%;
-            border-radius: 28px;
+            border-radius: 47px;
             transition: opacity 0.3s ease;
             display: block;
         }
@@ -399,16 +399,18 @@
 
         /* iPhone specific styles */
         .device-iphone .app-icon {
-            width: 100px;
-            height: 100px;
+            width: 130px;
+            height: 130px;
         }
 
         .device-iphone h1 {
-            font-size: 52px;
+            font-size: 64px;
+            margin-bottom: 5px;
         }
 
         .device-iphone .subtitle {
-            font-size: 20px;
+            font-size: 26px;
+            margin-bottom: 28px;
         }
 
         .device-iphone .button {
@@ -416,13 +418,21 @@
             padding: 14px 28px;
         }
 
-        .device-iphone .note,
+        .device-iphone .note {
+            font-size: 11px;
+            margin-bottom: 8px;
+        }
+
         .device-iphone .credit {
-            font-size: 13px;
+            font-size: 10px;
+        }
+
+        .device-iphone .content-top {
+            margin-bottom: -20px;
         }
 
         .device-iphone .content-bottom {
-            margin-top: 40px;
+            margin-top: 60px;
         }
 
         /* iPad specific styles */
@@ -662,10 +672,12 @@
         const currentTheme = localStorage.getItem('theme') || 'dark';
         if (currentTheme === 'light') {
             document.body.classList.add('light-mode');
+            document.documentElement.classList.add('light-mode');
         }
 
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
+            document.documentElement.classList.toggle('light-mode');
             const theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
             localStorage.setItem('theme', theme);
             
