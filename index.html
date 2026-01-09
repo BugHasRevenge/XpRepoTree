@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,660 +22,607 @@
             box-sizing: border-box;
         }
 
-        html, body {
-            color-scheme: only dark !important;
-        }
+```
+    html, body {
+        color-scheme: only dark !important;
+    }
 
-        html {
-            -webkit-text-size-adjust: 100%;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            position: fixed;
-        }
+    html {
+        -webkit-text-size-adjust: 100%;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: fixed;
+    }
 
+    body {
+        font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(to bottom, #6F2D80 0%, #280330 100%);
+        width: 100%;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        position: relative;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body::before {
+        content: '';
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(146, 83, 183, 0.4) 0%, transparent 70%);
+        border-radius: 50%;
+        top: -250px;
+        left: -250px;
+        animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { 
+            transform: translate(0, 0) rotate(0deg);
+        }
+        33% { 
+            transform: translate(40px, -30px) rotate(120deg);
+        }
+        66% { 
+            transform: translate(-20px, 40px) rotate(240deg);
+        }
+    }
+
+    .copy-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 50%;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .copy-button:active {
+        transform: scale(0.95);
+    }
+
+    .copy-button svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .container {
+        text-align: center;
+        max-width: 500px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content-top {
+        flex: 0;
+    }
+
+    .content-bottom {
+        flex: 0;
+        margin-top: 35;
+        padding-bottom: 20px;
+    }
+
+    .icon-container {
+        margin-bottom: 15px;
+    }
+
+    @keyframes iconFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+    }
+
+    .app-icon {
+        width: 120px;
+        height: 120px;
+        border-radius: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(166, 107, 201, 0.4);
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: iconGlow 4s ease-in-out infinite, iconFloat 6s ease-in-out infinite;
+        cursor: pointer;
+    }
+
+    .app-icon:hover {
+        transform: scale(1.05) rotate(2deg) translateY(0);
+    }
+
+    .app-icon:active {
+        transform: scale(0.98);
+    }
+
+    @keyframes iconGlow {
+        0%, 100% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(166, 107, 201, 0.4); }
+        50% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 60px rgba(166, 107, 201, 0.8); }
+    }
+
+    .icon-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+        display: block;
+    }
+
+    h1 {
+        font-size: 52px;
+        font-weight: 700;
+        background: linear-gradient(180deg, #FFFFFF 0%, #D16EFF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 3px;
+        letter-spacing: -2px;
+        font-family: 'Instrument Sans', sans-serif;
+        animation: titleGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes titleGlow {
+        0%, 100% { filter: drop-shadow(0 0 30px rgba(209, 110, 255, 0.6)); }
+        50% { filter: drop-shadow(0 0 50px rgba(209, 110, 255, 1)); }
+    }
+
+    .subtitle {
+        font-size: 20px;
+        background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 25px;
+        font-weight: 700;
+        font-family: 'Instrument Sans', sans-serif;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .button {
+        padding: 14px 28px;
+        border: none;
+        border-radius: 18px;
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        font-family: 'Instrument Sans', sans-serif;
+        position: relative;
+        overflow: hidden;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        user-select: none;
+    }
+
+    .button::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .button:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .button:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .button:active {
+        transform: translateY(0) scale(0.98);
+        opacity: 0.9;
+    }
+
+    .button span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .button-slidestore {
+        background: linear-gradient(90deg, #3140FF 0%, #DD0DFF 50%, #08DEFD 100%);
+    }
+
+    .button-altstore {
+        background: linear-gradient(90deg, #129499 0%, #046679 100%);
+    }
+
+    .button-feather {
+        background: linear-gradient(90deg, #8691FA 0%, #5A66D8 100%);
+    }
+
+    .button-livecontainer {
+        background: linear-gradient(90deg, #0083FF 0%, #0050FF 100%);
+    }
+
+    .note {
+        margin-top: 25px;
+        font-size: 13px;
+        background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.5;
+        font-weight: 700;
+        font-family: 'Instrument Sans', sans-serif;
+        margin-bottom: 15px;
+    }
+
+    .credit {
+        font-size: 13px;
+        font-weight: 700;
+        font-family: 'Instrument Sans', sans-serif;
+        margin-top: 10px;
+    }
+
+    .credit-made {
+        background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .credit-name {
+        background: linear-gradient(90deg, #00D9FF 0%, #0050FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        cursor: pointer;
+        transition: filter 0.3s ease;
+    }
+
+    .credit-name:hover {
+        filter: brightness(1.2);
+    }
+
+    /* Toast notification for copy feedback */
+    .toast {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-100px);
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 700;
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 2000;
+    }
+
+    .toast.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+
+    /* iPhone specific styles */
+    .device-iphone .app-icon {
+        width: 120px;
+        height: 120px;
+    }
+
+    .device-iphone h1 {
+        font-size: 57px;
+    }
+
+    .device-iphone .subtitle {
+        font-size: 24px;
+    }
+
+    .device-iphone .button {
+        font-size: 18px;
+        padding: 14px 28px;
+    }
+
+    .device-iphone .note,
+    .device-iphone .credit {
+        font-size: 12px;
+    }
+
+    .device-iphone .content-bottom {
+        margin-top: 40px;
+    }
+
+    /* iPad specific styles */
+    .device-ipad .app-icon {
+        width: 140px;
+        height: 140px;
+    }
+
+    .device-ipad h1 {
+        font-size: 72px;
+    }
+
+    .device-ipad .subtitle {
+        font-size: 28px;
+        margin-bottom: 35px;
+    }
+
+    .device-ipad .button {
+        font-size: 24px;
+        padding: 20px 40px;
+    }
+
+    .device-ipad .buttons {
+        gap: 18px;
+    }
+
+    .device-ipad .note,
+    .device-ipad .credit {
+        font-size: 16px;
+    }
+
+    .device-ipad .icon-container {
+        margin-bottom: 25px;
+    }
+
+    .device-ipad .note {
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .device-ipad .content-bottom {
+        margin-top: 50px;
+    }
+
+    /* Desktop specific styles */
+    .device-desktop .app-icon {
+        width: 160px;
+        height: 160px;
+    }
+
+    .device-desktop h1 {
+        font-size: 80px;
+    }
+
+    .device-desktop .subtitle {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+
+    .device-desktop .button {
+        font-size: 26px;
+        padding: 20px 42px;
+    }
+
+    .device-desktop .buttons {
+        gap: 20px;
+    }
+
+    .device-desktop .note,
+    .device-desktop .credit {
+        font-size: 17px;
+    }
+
+    .device-desktop .icon-container {
+        margin-bottom: 30px;
+    }
+
+    .device-desktop .note {
+        margin-top: 45px;
+        margin-bottom: 25px;
+    }
+
+    .device-desktop .copy-button {
+        width: 60px;
+        height: 60px;
+    }
+
+    .device-desktop .copy-button svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .device-desktop .content-bottom {
+        margin-top: 0;
+        padding-bottom: 0;
+    }
+
+    /* Landscape mode adjustments */
+    @media (orientation: landscape) and (max-height: 500px) {
         body {
-            font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(to bottom, #6F2D80 0%, #280330 100%);
-            width: 100%;
-            min-height: 100vh;
-            min-height: -webkit-fill-available;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-            position: relative;
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
-            -webkit-tap-highlight-color: transparent;
-            transition: background 0.3s ease;
-        }
-
-        body.light-mode {
-            background: linear-gradient(to bottom, #9253B7 0%, #2C1232 100%);
-        }
-
-        html.light-mode {
-            background: linear-gradient(to bottom, #9253B7 0%, #2C1232 100%);
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(146, 83, 183, 0.4) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -250px;
-            left: -250px;
-            animation: float 20s ease-in-out infinite;
-            transition: background 0.3s ease;
-        }
-
-        body.light-mode::before {
-            background: radial-gradient(circle, rgba(146, 83, 183, 0.4) 0%, transparent 70%);
-        }
-
-        @keyframes float {
-            0%, 100% { 
-                transform: translate(0, 0) rotate(0deg);
-            }
-            33% { 
-                transform: translate(40px, -30px) rotate(120deg);
-            }
-            66% { 
-                transform: translate(-20px, 40px) rotate(240deg);
-            }
-        }
-
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 50%;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .theme-toggle:active {
-            transform: scale(0.95);
-        }
-
-        body.light-mode .theme-toggle {
-            background: rgba(44, 18, 50, 0.1);
-        }
-
-        .theme-toggle svg {
-            width: 24px;
-            height: 24px;
-            transition: all 0.3s ease;
-        }
-
-        .sun-icon {
-            display: none;
-            stroke: #2C1232;
-            fill: none;
-            stroke-width: 2;
-        }
-
-        .moon-icon {
-            display: block;
-            fill: white;
-        }
-
-        body.light-mode .sun-icon {
-            display: block;
-        }
-
-        body.light-mode .moon-icon {
-            display: none;
+            padding: 15px;
         }
 
         .container {
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-            padding: 0 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .content-top {
-            flex: 0;
-        }
-
-        .content-bottom {
-            flex: 0;
-            margin-top: 35;
-            padding-bottom: 20px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 30px;
+            max-width: 900px;
+            align-items: center;
+            text-align: left;
         }
 
         .icon-container {
-            margin-bottom: 15px;
+            margin-bottom: 0;
+            grid-row: 1 / 4;
         }
 
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .app-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 40px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(166, 107, 201, 0.4);
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: iconGlow 4s ease-in-out infinite, iconFloat 6s ease-in-out infinite;
-            cursor: pointer;
-        }
-
-        .app-icon:hover {
-            transform: scale(1.05) rotate(2deg) translateY(0);
-        }
-
-        .app-icon:active {
-            transform: scale(0.98);
-        }
-
-        body.light-mode .app-icon {
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(166, 107, 201, 0.4);
-        }
-
-        @keyframes iconGlow {
-            0%, 100% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(166, 107, 201, 0.4); }
-            50% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 60px rgba(166, 107, 201, 0.8); }
-        }
-
-        body.light-mode .app-icon {
-            animation: iconGlow 4s ease-in-out infinite;
-        }
-
-        @keyframes iconGlowLight {
-            0%, 100% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(166, 107, 201, 0.4); }
-            50% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 60px rgba(166, 107, 201, 0.8); }
-        }
-
-        .app-icon:hover {
-            transform: scale(1.05) rotate(2deg) translateY(0);
-        }
-
-        .app-icon:active {
-            transform: scale(0.98);
-        }
-
-        .icon-image {
-            width: 100%;
-            height: 100%;
-            border-radius: 0px;
-            transition: opacity 0.3s ease;
-            display: block;
-        }
-
-        body.light-mode .icon-image {
-            content: url('https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/main/images/XP_New-iOS-Default-1024x10241x.png');
-        }
-
-        body:not(.light-mode) .icon-image {
-            content: url('https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/main/images/XP_New-iOS-Default-1024x10241x.png');
-        }
-
-        h1 {
-            font-size: 52px;
-            font-weight: 700;
-            background: linear-gradient(180deg, #FFFFFF 0%, #D16EFF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 3px;
-            letter-spacing: -2px;
-            font-family: 'Instrument Sans', sans-serif;
-            animation: titleGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes titleGlow {
-            0%, 100% { filter: drop-shadow(0 0 30px rgba(209, 110, 255, 0.6)); }
-            50% { filter: drop-shadow(0 0 50px rgba(209, 110, 255, 1)); }
-        }
-
-        .subtitle {
-            font-size: 20px;
-            background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 25px;
-            font-weight: 700;
-            font-family: 'Instrument Sans', sans-serif;
-        }
-
-        body.light-mode .subtitle {
-            background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        h1, .subtitle {
+            text-align: left;
         }
 
         .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            grid-column: 2;
         }
 
-        .button {
-            padding: 14px 28px;
-            border: none;
-            border-radius: 18px;
-            font-size: 18px;
-            font-weight: 700;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-            font-family: 'Instrument Sans', sans-serif;
-            position: relative;
-            overflow: hidden;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-            user-select: none;
+        .note, .credit {
+            grid-column: 2;
+            text-align: left;
         }
 
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+        .app-icon {
+            width: 80px;
+            height: 80px;
         }
 
-        .button:hover::before {
-            width: 300px;
-            height: 300px;
+        h1 {
+            font-size: 36px;
+            margin-bottom: 2px;
         }
 
-        .button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .button:active {
-            transform: translateY(0) scale(0.98);
-            opacity: 0.9;
-        }
-
-        .button span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .button-slidestore {
-            background: linear-gradient(90deg, #3140FF 0%, #DD0DFF 50%, #08DEFD 100%);
-        }
-
-        .button-altstore {
-            background: linear-gradient(90deg, #129499 0%, #046679 100%);
-        }
-
-        .button-feather {
-            background: linear-gradient(90deg, #8691FA 0%, #5A66D8 100%);
-        }
-
-        .button-livecontainer {
-            background: linear-gradient(90deg, #0083FF 0%, #0050FF 100%);
-        }
-
-        .note {
-            margin-top: 25px;
-            font-size: 13px;
-            background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.5;
-            font-weight: 700;
-            font-family: 'Instrument Sans', sans-serif;
+        .subtitle {
+            font-size: 16px;
             margin-bottom: 15px;
         }
 
-        body.light-mode .note {
-            background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .button {
+            font-size: 14px;
+            padding: 10px 20px;
         }
 
-        .credit {
-            font-size: 13px;
-            font-weight: 700;
-            font-family: 'Instrument Sans', sans-serif;
-            margin-top: 10px;
+        .buttons {
+            gap: 8px;
         }
 
-        .credit-made {
-            background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .note, .credit {
+            font-size: 11px;
         }
 
-        body.light-mode .credit-made {
-            background: linear-gradient(180deg, #BFBDBD 0%, #949494 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .note {
+            margin-top: 15px;
+            margin-bottom: 8px;
         }
+    }
+</style>
+```
 
-        .credit-name {
-            background: linear-gradient(90deg, #00D9FF 0%, #0050FF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            cursor: pointer;
-            transition: filter 0.3s ease;
-        }
-
-        .credit-name:hover {
-            filter: brightness(1.2);
-        }
-
-        /* iPhone specific styles */
-        .device-iphone .app-icon {
-            width: 120px;
-            height: 120px;
-        }
-
-        .device-iphone h1 {
-            font-size: 57px;
-        }
-
-        .device-iphone .subtitle {
-            font-size: 24px;
-        }
-
-        .device-iphone .button {
-            font-size: 18px;
-            padding: 14px 28px;
-        }
-
-        .device-iphone .note,
-        .device-iphone .credit {
-            font-size: 12px;
-        }
-
-        .device-iphone .content-bottom {
-            margin-top: 40px;
-        }
-
-        /* iPad specific styles */
-        .device-ipad .app-icon {
-            width: 140px;
-            height: 140px;
-        }
-
-        .device-ipad h1 {
-            font-size: 72px;
-        }
-
-        .device-ipad .subtitle {
-            font-size: 28px;
-            margin-bottom: 35px;
-        }
-
-        .device-ipad .button {
-            font-size: 24px;
-            padding: 20px 40px;
-        }
-
-        .device-ipad .buttons {
-            gap: 18px;
-        }
-
-        .device-ipad .note,
-        .device-ipad .credit {
-            font-size: 16px;
-        }
-
-        .device-ipad .icon-container {
-            margin-bottom: 25px;
-        }
-
-        .device-ipad .note {
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        .device-ipad .content-bottom {
-            margin-top: 50px;
-        }
-
-        /* Desktop specific styles */
-        .device-desktop .app-icon {
-            width: 160px;
-            height: 160px;
-        }
-
-        .device-desktop h1 {
-            font-size: 80px;
-        }
-
-        .device-desktop .subtitle {
-            font-size: 32px;
-            margin-bottom: 40px;
-        }
-
-        .device-desktop .button {
-            font-size: 26px;
-            padding: 20px 42px;
-        }
-
-        .device-desktop .buttons {
-            gap: 20px;
-        }
-
-        .device-desktop .note,
-        .device-desktop .credit {
-            font-size: 17px;
-        }
-
-        .device-desktop .icon-container {
-            margin-bottom: 30px;
-        }
-
-        .device-desktop .note {
-            margin-top: 45px;
-            margin-bottom: 25px;
-        }
-
-        .device-desktop .theme-toggle {
-            width: 60px;
-            height: 60px;
-        }
-
-        .device-desktop .theme-toggle svg {
-            width: 28px;
-            height: 28px;
-        }
-
-        .device-desktop .content-bottom {
-            margin-top: 0;
-            padding-bottom: 0;
-        }
-
-        /* Landscape mode adjustments */
-        @media (orientation: landscape) and (max-height: 500px) {
-            body {
-                padding: 15px;
-            }
-
-            .container {
-                display: grid;
-                grid-template-columns: auto 1fr;
-                gap: 30px;
-                max-width: 900px;
-                align-items: center;
-                text-align: left;
-            }
-
-            .icon-container {
-                margin-bottom: 0;
-                grid-row: 1 / 4;
-            }
-
-            h1, .subtitle {
-                text-align: left;
-            }
-
-            .buttons {
-                grid-column: 2;
-            }
-
-            .note, .credit {
-                grid-column: 2;
-                text-align: left;
-            }
-
-            .app-icon {
-                width: 80px;
-                height: 80px;
-            }
-
-            h1 {
-                font-size: 36px;
-                margin-bottom: 2px;
-            }
-
-            .subtitle {
-                font-size: 16px;
-                margin-bottom: 15px;
-            }
-
-            .button {
-                font-size: 14px;
-                padding: 10px 20px;
-            }
-
-            .buttons {
-                gap: 8px;
-            }
-
-            .note, .credit {
-                font-size: 11px;
-            }
-
-            .note {
-                margin-top: 15px;
-                margin-bottom: 8px;
-            }
-        }
-    </style>
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <svg class="sun-icon" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-        </svg>
-        <svg class="moon-icon" viewBox="0 0 24 24">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    <button class="copy-button" onclick="copySourceURL()" aria-label="Copy source URL">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
         </svg>
     </button>
 
-    <div class="container">
-        <div class="content-top">
-            <div class="icon-container">
-                <div class="app-icon" onclick="window.location.href='https://pstream.mov/'">
-                    <img src="https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/refs/heads/main/images/XP_New-iOS-Default-1024x10241x.png" alt="XP App" class="icon-image">
-                </div>
-            </div>
+```
+<div class="toast" id="toast">Source URL copied!</div>
 
-            <h1>XP App</h1>
-            <p class="subtitle">Source</p>
-
-            <div class="buttons">
-                <button class="button button-slidestore" onclick="window.location.href='sidestore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to SlideStore</span></button>
-                <button class="button button-altstore" onclick="window.location.href='altstore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to AltStore</span></button>
-                <button class="button button-feather" onclick="window.location.href='feather://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to Feather</span></button>
-                <button class="button button-livecontainer" onclick="window.location.href='livecontainer://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to LiveContainer</span></button>
+<div class="container">
+    <div class="content-top">
+        <div class="icon-container">
+            <div class="app-icon" onclick="window.location.href='https://pstream.mov/'">
+                <img src="https://raw.githubusercontent.com/BugHasRevenge/XpRepoTree/refs/heads/main/images/XP_New-iOS-Default-1024x10241x.png" alt="XP App" class="icon-image">
             </div>
         </div>
 
-        <div class="content-bottom">
-            <p class="note">
-                Note: You must have your chosen<br>
-                sideloader already installed for the<br>
-                redirection to work.
-            </p>
+        <h1>XP App</h1>
+        <p class="subtitle">Source</p>
 
-            <p class="credit">
-                <span class="credit-made">Made by</span> <span class="credit-name" onclick="window.open('https://github.com/BugHasRevenge', '_blank')">BugHasRevenge</span>
-            </p>
+        <div class="buttons">
+            <button class="button button-slidestore" onclick="window.location.href='sidestore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to SideStore</span></button>
+            <button class="button button-altstore" onclick="window.location.href='altstore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to AltStore</span></button>
+            <button class="button button-feather" onclick="window.location.href='feather://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to Feather</span></button>
+            <button class="button button-livecontainer" onclick="window.location.href='livecontainer://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to LiveContainer</span></button>
         </div>
     </div>
 
-    <script>
-        // Device detection and optimization
-        function detectDevice() {
-            const ua = navigator.userAgent;
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            
-            // Detect device type
-            if (/iPad/.test(ua) || (width >= 768 && /Macintosh/.test(ua) && 'ontouchend' in document)) {
-                document.body.classList.add('device-ipad');
-            } else if (/iPhone/.test(ua)) {
-                document.body.classList.add('device-iphone');
-            } else {
-                document.body.classList.add('device-desktop');
+    <div class="content-bottom">
+        <p class="note">
+            Note: You must have your chosen<br>
+            sideloader already installed for the<br>
+            redirection to work.
+        </p>
+
+        <p class="credit">
+            <span class="credit-made">Made by</span> <span class="credit-name" onclick="window.open('https://github.com/BugHasRevenge', '_blank')">BugHasRevenge</span>
+        </p>
+    </div>
+</div>
+
+<script>
+    // Device detection and optimization
+    function detectDevice() {
+        const ua = navigator.userAgent;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        
+        // Detect device type
+        if (/iPad/.test(ua) || (width >= 768 && /Macintosh/.test(ua) && 'ontouchend' in document)) {
+            document.body.classList.add('device-ipad');
+        } else if (/iPhone/.test(ua)) {
+            document.body.classList.add('device-iphone');
+        } else {
+            document.body.classList.add('device-desktop');
+        }
+    }
+
+    // Run on load
+    detectDevice();
+
+    // Copy source URL to clipboard
+    function copySourceURL() {
+        const sourceURL = 'https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json';
+        
+        // Use the modern clipboard API
+        navigator.clipboard.writeText(sourceURL).then(() => {
+            showToast();
+        }).catch(() => {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = sourceURL;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast();
+            } catch (err) {
+                console.error('Failed to copy:', err);
             }
-        }
+            document.body.removeChild(textArea);
+        });
+    }
 
-        // Run on load
-        detectDevice();
+    // Show toast notification
+    function showToast() {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2000);
+    }
+</script>
+```
 
-        // Check for saved theme preference or default to dark mode
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        if (currentTheme === 'light') {
-            document.body.classList.add('light-mode');
-            document.documentElement.classList.add('light-mode');
-        }
-
-        function toggleTheme() {
-            document.body.classList.toggle('light-mode');
-            document.documentElement.classList.toggle('light-mode');
-            const theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
-            localStorage.setItem('theme', theme);
-            
-            // Update theme-color meta tag
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            metaTheme.setAttribute('content', theme === 'light' ? '#2C1232' : '#280330');
-        }
-    </script>
 </body>
 </html>
