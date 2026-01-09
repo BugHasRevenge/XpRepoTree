@@ -120,7 +120,7 @@
 
     .content-bottom {
         flex: 0;
-        margin-top: 35;
+        margin-top: 35px;
         padding-bottom: 20px;
     }
 
@@ -214,28 +214,9 @@
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         font-family: 'Instrument Sans', sans-serif;
         position: relative;
-        overflow: hidden;
         -webkit-tap-highlight-color: transparent;
         -webkit-touch-callout: none;
         user-select: none;
-    }
-
-    .button::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-    }
-
-    .button:hover::before {
-        width: 300px;
-        height: 300px;
     }
 
     .button:hover {
@@ -248,12 +229,7 @@
         opacity: 0.9;
     }
 
-    .button span {
-        position: relative;
-        z-index: 1;
-    }
-
-    .button-slidestore {
+    .button-sidestore {
         background: linear-gradient(90deg, #3140FF 0%, #DD0DFF 50%, #08DEFD 100%);
     }
 
@@ -309,7 +285,6 @@
         filter: brightness(1.2);
     }
 
-    /* Toast notification for copy feedback */
     .toast {
         position: fixed;
         top: 20px;
@@ -332,7 +307,6 @@
         opacity: 1;
     }
 
-    /* iPhone specific styles */
     .device-iphone .app-icon {
         width: 120px;
         height: 120px;
@@ -360,7 +334,6 @@
         margin-top: 40px;
     }
 
-    /* iPad specific styles */
     .device-ipad .app-icon {
         width: 140px;
         height: 140px;
@@ -402,7 +375,6 @@
         margin-top: 50px;
     }
 
-    /* Desktop specific styles */
     .device-desktop .app-icon {
         width: 160px;
         height: 160px;
@@ -455,7 +427,6 @@
         padding-bottom: 0;
     }
 
-    /* Landscape mode adjustments */
     @media (orientation: landscape) and (max-height: 500px) {
         body {
             padding: 15px;
@@ -548,10 +519,10 @@
         <p class="subtitle">Source</p>
 
         <div class="buttons">
-            <button class="button button-slidestore" onclick="window.location.href='sidestore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to SideStore</span></button>
-            <button class="button button-altstore" onclick="window.location.href='altstore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to AltStore</span></button>
-            <button class="button button-feather" onclick="window.location.href='feather://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to Feather</span></button>
-            <button class="button button-livecontainer" onclick="window.location.href='livecontainer://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to LiveContainer</span></button>
+            <button class="button button-sidestore" onclick="window.location.href='sidestore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'">Add to SideStore</button>
+            <button class="button button-altstore" onclick="window.location.href='altstore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'">Add to AltStore</button>
+            <button class="button button-feather" onclick="window.location.href='feather://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'">Add to Feather</button>
+            <button class="button button-livecontainer" onclick="window.location.href='livecontainer://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'">Add to LiveContainer</button>
         </div>
     </div>
 
@@ -569,13 +540,10 @@
 </div>
 
 <script>
-    // Device detection and optimization
     function detectDevice() {
         const ua = navigator.userAgent;
         const width = window.innerWidth;
-        const height = window.innerHeight;
         
-        // Detect device type
         if (/iPad/.test(ua) || (width >= 768 && /Macintosh/.test(ua) && 'ontouchend' in document)) {
             document.body.classList.add('device-ipad');
         } else if (/iPhone/.test(ua)) {
@@ -585,18 +553,14 @@
         }
     }
 
-    // Run on load
     detectDevice();
 
-    // Copy source URL to clipboard
     function copySourceURL() {
         const sourceURL = 'https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json';
         
-        // Use the modern clipboard API
         navigator.clipboard.writeText(sourceURL).then(() => {
             showToast();
         }).catch(() => {
-            // Fallback for older browsers
             const textArea = document.createElement('textarea');
             textArea.value = sourceURL;
             textArea.style.position = 'fixed';
@@ -613,7 +577,6 @@
         });
     }
 
-    // Show toast notification
     function showToast() {
         const toast = document.getElementById('toast');
         toast.classList.add('show');
@@ -622,5 +585,7 @@
         }, 2000);
     }
 </script>
+```
+
 </body>
 </html>
