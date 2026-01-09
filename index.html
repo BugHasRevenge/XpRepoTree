@@ -306,6 +306,43 @@
             opacity: 1;
         }
 
+        /* Copy button in top right */
+        .copy-button-top {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .copy-button-top:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .copy-button-top:active {
+            transform: scale(0.95);
+        }
+
+        .copy-button-top svg {
+            width: 20px;
+            height: 20px;
+        }
+
         /* iPhone specific styles */
         .device-iphone .app-icon {
             width: 120px;
@@ -490,6 +527,13 @@
 <body>
     <div class="toast" id="toast">Source URL copied!</div>
 
+    <button class="copy-button-top" onclick="copySourceURL()" aria-label="Copy Source URL">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+    </button>
+
     <div class="container">
         <div class="content-top">
             <div class="icon-container">
@@ -506,7 +550,6 @@
                 <button class="button button-altstore" onclick="window.location.href='altstore://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to AltStore</span></button>
                 <button class="button button-feather" onclick="window.location.href='feather://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to Feather</span></button>
                 <button class="button button-livecontainer" onclick="window.location.href='livecontainer://source/?url=https://raw.githubusercontent.com/BugHasRevenge/XprimeAppRepo/main/app-repo.json'"><span>Add to LiveContainer</span></button>
-                <button class="button button-copy" onclick="copySourceURL()"><span>Copy Source URL</span></button>
             </div>
         </div>
 
